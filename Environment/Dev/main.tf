@@ -10,7 +10,7 @@ module "vnet" {
 }
 module "snet" {
   source     = "../../Module/azurerm_subnet"
-  depends_on = [module.vnet, module.rg]
+  depends_on = [module.vnet]
   snet       = var.snet
 
 }
@@ -24,14 +24,14 @@ module "nic" {
   depends_on = [module.pip, module.snet, module.rg]
   nic        = var.nic
 }
-module "kv" {
-  source     = "../../Module/azurerm_key_vault"
-  depends_on = [module.rg, module.pip]
-  kv         = var.kv
-}
+# module "kv" {
+#   source     = "../../Module/azurerm_key_vault"
+#   depends_on = [module.rg]
+#   kv         = var.kv
+# }
 module "nsg" {
   source     = "../../Module/azurerm_network_security_group"
-  depends_on = [module.vm]
+  depends_on = [module.rg]
   nsg        = var.nsg
 }
 module "nic-assoc" {
@@ -40,18 +40,18 @@ module "nic-assoc" {
   nsg-nic-assoc = var.nsg-nic-assoc
 
 }
-module "kvsu" {
-  source     = "../../Module/azurerm_key_vault_secret_username"
-  depends_on = [module.kv]
-  kvsu       = var.kvsu
-}
-module "kvsp" {
-  source     = "../../Module/azurerm_key_vault_secret_password"
-  depends_on = [module.kv]
-  kvsp       = var.kvsp
-}
-module "vm" {
-  source     = "../../Module/azurerm_virtual_machine"
-  depends_on = [module.nic, module.kv, module.rg]
-  vm         = var.vm
-}
+# module "kvsu" {
+#   source     = "../../Module/azurerm_key_vault_secret_username"
+#   depends_on = [module.kv]
+#   kvsu       = var.kvsu
+# }
+# module "kvsp" {
+#   source     = "../../Module/azurerm_key_vault_secret_password"
+#   depends_on = [module.kv]
+#   kvsp       = var.kvsp
+# }
+# module "vm" {
+#   source     = "../../Module/azurerm_virtual_machine"
+#   depends_on = [module.nic, module.kv, module.rg]
+#   vm         = var.vm
+# }
