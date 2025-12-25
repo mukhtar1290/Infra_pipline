@@ -16,7 +16,7 @@ steps:
     provider: 'azurerm'
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'
-    backendServiceArm: 'mukhtar Service connection'
+    backendServiceArm: 'mukhtar service conn1'
     backendAzureRmStorageAccountName: 'mukhtar11'
     backendAzureRmContainerName: 'kitab'
     backendAzureRmKey: 'mukhtar.tfstate'
