@@ -65,10 +65,9 @@ variable "vm" {
 variable "nic" {
 
 }
-variable "kv" {
 
-}
-variable "kvsu" {
+
+
 
 }
 variable "kvsp" {
