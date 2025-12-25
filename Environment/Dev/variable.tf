@@ -69,10 +69,10 @@ variable "nic" {
 
 
 
-}
+
 variable "kvsp" {
 
 }
-variable "nsg-nic-assoc" {
+# variable "nsg-nic-assoc" {
 
-}
+# }

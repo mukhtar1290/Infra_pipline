@@ -34,12 +34,12 @@ module "nsg" {
   depends_on = [module.rg]
   nsg        = var.nsg
 }
-module "nic-assoc" {
-  source        = "../../Module/azurerm_network_interface_security_group_association"
-  depends_on    = [module.nic, module.nsg, module.vm]
-  nsg-nic-assoc = var.nsg-nic-assoc
+# module "nic-assoc" {
+#   source        = "../../Module/azurerm_network_interface_security_group_association"
+#   depends_on    = [module.nic, module.nsg, module.vm]
+#   nsg-nic-assoc = var.nsg-nic-assoc
 
-}
+# }
 # module "kvsu" {
 #   source     = "../../Module/azurerm_key_vault_secret_username"
 #   depends_on = [module.kv]
