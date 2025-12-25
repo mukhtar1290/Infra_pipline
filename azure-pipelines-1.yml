@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool: mukhtar12
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'
+    backendServiceArm: 'mukhtar service conn1'
+    backendAzureRmStorageAccountName: 'mukhtar11'
+    backendAzureRmContainerName: 'kitab'
+    backendAzureRmKey: 'mukhtar.tfstate'
+  displayName: terraform init
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/Dev'
+    environmentServiceNameAzureRM: 'mukhtar service conn1'
+  displayName: terraform plan
